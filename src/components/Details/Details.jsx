@@ -1,8 +1,15 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-function Details () {
+
+function Details({movie}) {
+
+    const movies = useSelector(store => store.movies);
+
+
+
     return (
         <>
-        <h2>Love those details.</h2>
         </>
     )
 }
