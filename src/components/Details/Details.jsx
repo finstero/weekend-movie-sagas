@@ -2,14 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 
-function Details({movie}) {
+function Details() {
 
-    const movies = useSelector(store => store.movies);
+    const clickedMovie = useSelector(store => store.clickedMovie);
 
 
 
     return (
         <>
+            <p>{clickedMovie.description}</p>
         </>
     )
 }

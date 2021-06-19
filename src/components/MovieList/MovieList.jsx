@@ -12,8 +12,6 @@ function MovieList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const movies = useSelector(store => store.movies);
-    const [movieClicked, setMovieClicked] = useState(false);
-    const [movieDescription, setMovieDescription] = useState('');
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -21,24 +19,21 @@ function MovieList() {
 
 
     const handleMovieClick = (movie) => {
-        console.log('clicked', movieClicked);
-        setMovieClicked(true);
-        console.log('clicked movie info', movie);
-        setMovieDescription(movie.description);
+        // console.log('clicked');
+        dispatch({
+            type: 'SET_DETAILS',
+            payload: movie
+        })
+        history.push('/details')
     }
 
     return (
         <>
-        {movieClicked ? (
-            <div>{movieDescription}</div>
-        ) : (
         <main>
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                            // <Details onClick={handleMovieClick} key={movie.id} movie={movie} />
-
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img onClick={ () => handleMovieClick(movie)} src={movie.poster} alt={movie.title}/>
@@ -47,7 +42,6 @@ function MovieList() {
                 })}
             </section>
         </main>
-        )}
         </>
     );
 }
