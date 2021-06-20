@@ -46,6 +46,7 @@ function MovieList() {
         root: {
             backgroundColor: theme.palette.primary.main,
             width: 200,
+            height: 370,
         },
         title: {
             fontSize: 18,
