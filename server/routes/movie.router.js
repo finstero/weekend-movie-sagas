@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// gets ALL movies from database
 router.get('/', (req, res) => {
 
     const query = `SELECT * FROM movies ORDER BY "title" ASC`;
@@ -15,6 +16,27 @@ router.get('/', (req, res) => {
         })
 
 });
+
+// gets clicked on movie info from database
+router.get('/details/:id', (req, res) => {
+
+    // const query = `SELECT * FROM "movies"
+    //                     WHERE "movies".id=$1;`;
+    const query = `SELECT * FROM "movies"
+                        JOIN "movies_genres" ON "movies_genres".movie_id = "movies".id
+                        JOIN "genres" ON "genres".id = "movies_genres".genre_id
+                        WHERE "movies".id = $1
+                        ;`;
+
+    pool.query(query, [req.params.id])
+        .then(result => {
+            console.log('res.send in get clicked movie', result.rows);
+            res.send(result.rows);
+        })
+        .catch(error => {
+            console.log('error in get clicked movie', error);
+        })
+})
 
 router.post('/', (req, res) => {
     console.log(req.body);

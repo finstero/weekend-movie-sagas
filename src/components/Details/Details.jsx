@@ -1,8 +1,25 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-function Details () {
+
+function Details() {
+
+    const history = useHistory();
+
+    const clickedMovie = useSelector(store => store.clickedMovie);
+    console.log('clickedMovie', clickedMovie);
+
+    // moves user back to MovieList on click of Return button
+    const handleClick = () => {
+        history.push('/');
+    }
+
+
     return (
         <>
-        <h2>Love those details.</h2>
+            <p>{clickedMovie[0]?.description}</p>
+            <button onClick={handleClick}>Return</button>
         </>
     )
 }
