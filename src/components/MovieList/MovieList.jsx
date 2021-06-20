@@ -13,17 +13,16 @@ function MovieList() {
     const history = useHistory();
     const movies = useSelector(store => store.movies);
 
-    // const clickedMovie = useSelector(store => store.clickedMovie);
-
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    // on click of add movie button, sends user to add page
     const handleAddClick = () => {
         history.push('/add');
     }
 
-    // sends clicked on movie through saga/reducer cycle. moves user to details page
+    // on click of movie, sends movie info through saga/reducer cycle. moves user to details page
     const handleMovieClick = (movie) => {
 
         console.log('clicked');
@@ -34,6 +33,7 @@ function MovieList() {
         history.push('/details')
     }
 
+    // displays movie title and movie poster image for every movie in database
     return (
         <>
         <main>

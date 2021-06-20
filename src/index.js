@@ -18,11 +18,14 @@ function* rootSaga() {
     yield takeEvery('ADD_MOVIE', addMovie);
 }
 
+// saga workers
+
+// adds new movie to database
 function* addMovie (action) {
-    console.log('add movie action.payload', action.payload);
+    // console.log('add movie action.payload', action.payload);
     try {
-        console.log('are we getting into try');
-        yield axios.post('/api/movie', action.payload)
+        yield axios.post('/api/movie', action.payload);
+        yield put({ type: 'FETCH_MOVIES'});
     } catch {
         console.log('error in addMovie', action.payload);
     }
@@ -40,8 +43,9 @@ function* fetchMovieDetails (action) {
     }
 }
 
+// get all movies from the database
 function* fetchAllMovies() {
-    // get all movies from the DB
+
     try {
         const movies = yield axios.get(`/api/movie`);
         console.log('get all:', movies.data);
@@ -75,6 +79,7 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+
  // stores data for clicked on movie
 const clickedMovie = (state = [], action) => {
     switch (action.type) {
@@ -93,6 +98,7 @@ const storeInstance = createStore(
         genres,
         clickedMovie
     }),
+
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
 );

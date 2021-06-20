@@ -16,11 +16,13 @@ function AddMovie() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // local states
     const [movieTitle, setMovieTitle] = useState('');
     const [moviePosterUrl, setMoviePosterUrl] = useState('');
     const [movieDescription, setMovieDescription] = useState('');
     const [genre, setGenre] = useState('');
 
+    // save movie info into object and send to saga/router/db
     const handleSave = (event) => {
         event.preventDefault();
         console.log('log genre', genre);
@@ -35,42 +37,42 @@ function AddMovie() {
         })
     }
 
+    // move user back to MovieList view
     const handleCancel = () => {
         history.push('/');
     }
-    const handleSelect = (event) => {
-        setGenre(event.target.value);
-        console.log('------ genre', genre)
-    }
 
+    // displays inputs, select, and buttons for user to save movie or go back
     return (
         <>
             <h3>Add a movie</h3>
-            <form onSubmit={handleSave}>
-                <Input
 
+            <form onSubmit={handleSave}>
+
+                <Input
                     onChange={(event) => { setMovieTitle(event.target.value) }}
                     placeholder="title"
                     color="primary"
                 />
-                <Input
 
+                <Input
                     onChange={(event) => { setMoviePosterUrl(event.target.value) }}
                     placeholder="poster url"
                     color="primary"
                 />
-                <TextField
 
+                <TextField
                     onChange={(event) => { setMovieDescription(event.target.value) }}
                     id="filled-basic"
                     label="Description"
                 />
+
                 <InputLabel id="genre-label">Genre</InputLabel>
                 <Select
                     labelId="genre-label"
                     id="genre"
                     value={genre}
-                    onChange={handleSelect}
+                    onChange={(event) => {setGenre(event.target.value)}}
                 >
 
                     <MenuItem value={1}>Adventure</MenuItem>
@@ -88,8 +90,11 @@ function AddMovie() {
                     <MenuItem value={13}>Superhero</MenuItem>
 
                 </Select>
+
                 <Button type="submit" color="primary">Save</Button>
+
             </form>
+
             <Button color="primary" onClick={handleCancel}>Cancel</Button>
         </>
     )
