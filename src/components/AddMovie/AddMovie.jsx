@@ -24,6 +24,15 @@ function AddMovie() {
     const handleSave = (event) => {
         event.preventDefault();
         console.log('log genre', genre);
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: { 
+                title: movieTitle,
+                poster: moviePosterUrl,
+                description: movieDescription,
+                genre_id: genre
+            }
+        })
     }
 
     const handleCancel = () => {
@@ -32,15 +41,6 @@ function AddMovie() {
     const handleSelect = (event) => {
         setGenre(event.target.value);
         console.log('------ genre', genre)
-        dispatch({
-            type: 'ADD_MOVIE',
-            payload: { 
-                title: movieTitle,
-                poster: moviePosterUrl,
-                description: movieDescription,
-                genre_id: 1
-            }
-        })
     }
 
     return (
@@ -50,22 +50,22 @@ function AddMovie() {
                 <Input
 
                     onChange={(event) => { setMovieTitle(event.target.value) }}
-                    placeholder="movie name"
+                    placeholder="title"
                     color="primary"
                 />
                 <Input
 
                     onChange={(event) => { setMoviePosterUrl(event.target.value) }}
-                    placeholder="movie poster url"
+                    placeholder="poster url"
                     color="primary"
                 />
                 <TextField
 
                     onChange={(event) => { setMovieDescription(event.target.value) }}
                     id="filled-basic"
-                    label="MOVIE DESCRIPTION"
+                    label="Description"
                 />
-                <InputLabel id="genre-label">Movie Genre</InputLabel>
+                <InputLabel id="genre-label">Genre</InputLabel>
                 <Select
                     labelId="genre-label"
                     id="genre"
@@ -73,19 +73,19 @@ function AddMovie() {
                     onChange={handleSelect}
                 >
 
-                    <MenuItem value="Adventure">Adventure</MenuItem>
-                    <MenuItem value="Animated">Animated</MenuItem>
-                    <MenuItem value="Biographical">Biographical</MenuItem>
-                    <MenuItem value="Comedy">Comedy</MenuItem>
-                    <MenuItem value="Disaster">Disaster</MenuItem>
-                    <MenuItem value="Drama">Drama</MenuItem>
-                    <MenuItem value="Epic">Epic</MenuItem>
-                    <MenuItem value="Fantasy">Fantasy</MenuItem>
-                    <MenuItem value="Musical">Musical</MenuItem>
-                    <MenuItem value="Romantic">Romantic</MenuItem>
-                    <MenuItem value="Science">Science Fiction</MenuItem>
-                    <MenuItem value="Space Opera">Space Opera</MenuItem>
-                    <MenuItem value="Superhero">Superhero</MenuItem>
+                    <MenuItem value={1}>Adventure</MenuItem>
+                    <MenuItem value={2}>Animated</MenuItem>
+                    <MenuItem value={3}>Biographical</MenuItem>
+                    <MenuItem value={4}>Comedy</MenuItem>
+                    <MenuItem value={5}>Disaster</MenuItem>
+                    <MenuItem value={6}>Drama</MenuItem>
+                    <MenuItem value={7}>Epic</MenuItem>
+                    <MenuItem value={8}>Fantasy</MenuItem>
+                    <MenuItem value={9}>Musical</MenuItem>
+                    <MenuItem value={10}>Romantic</MenuItem>
+                    <MenuItem value={11}>Science Fiction</MenuItem>
+                    <MenuItem value={12}>Space Opera</MenuItem>
+                    <MenuItem value={13}>Superhero</MenuItem>
 
                 </Select>
                 <Button type="submit" color="primary">Save</Button>

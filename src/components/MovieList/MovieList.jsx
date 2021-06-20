@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 
 import './MovieList.css'
 
-//components
-import Details from '../Details/Details';
+// material ui
+import Button from '@material-ui/core/Button';
 
 function MovieList() {
 
@@ -18,6 +18,10 @@ function MovieList() {
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
+
+    const handleAddClick = () => {
+        history.push('/add');
+    }
 
     // sends clicked on movie through saga/reducer cycle. moves user to details page
     const handleMovieClick = (movie) => {
@@ -33,7 +37,7 @@ function MovieList() {
     return (
         <>
         <main>
-            <h1>MovieList</h1>
+            <Button onClick={handleAddClick}>Add Movie</Button>
             <section className="movies">
                 {movies.map(movie => {
                     return (
