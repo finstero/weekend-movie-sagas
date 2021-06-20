@@ -52,19 +52,20 @@ function AddMovie() {
                 <Input
                     onChange={(event) => { setMovieTitle(event.target.value) }}
                     placeholder="title"
-                    color="primary"
+                    color="secondary"
                 />
 
                 <Input
                     onChange={(event) => { setMoviePosterUrl(event.target.value) }}
                     placeholder="poster url"
-                    color="primary"
+                    color="secondary"
                 />
 
                 <TextField
                     onChange={(event) => { setMovieDescription(event.target.value) }}
                     id="filled-basic"
                     label="Description"
+                    color="secondary"
                 />
 
                 <InputLabel id="genre-label">Genre</InputLabel>
@@ -72,6 +73,7 @@ function AddMovie() {
                     labelId="genre-label"
                     id="genre"
                     value={genre}
+                    color="secondary"
                     onChange={(event) => {setGenre(event.target.value)}}
                 >
 
@@ -91,11 +93,11 @@ function AddMovie() {
 
                 </Select>
 
-                <Button type="submit" color="primary">Save</Button>
+                <Button type="submit" color="secondary">Save</Button>
 
             </form>
 
-            <Button color="primary" onClick={handleCancel}>Cancel</Button>
+            <Button color="secondary" onClick={handleCancel}>Cancel</Button>
         </>
     )
 }

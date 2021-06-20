@@ -42,9 +42,9 @@ function MovieList() {
         history.push('/details')
     }
 
-    const useStyles = makeStyles({
+    const useStyles = makeStyles((theme) => ({
         root: {
-            backgroundColor: "#1F191B",
+            backgroundColor: theme.palette.primary.main,
             width: 200,
         },
         title: {
@@ -53,7 +53,7 @@ function MovieList() {
         // pos: {
         //     marginBottom: 12,
         // }
-    });
+    }));
 
     const classes = useStyles();
 
@@ -62,7 +62,7 @@ function MovieList() {
         <>
             <main className="main">
                 <Button onClick={handleAddClick} color="textPrimary">Add Movie</Button>
-                <Grid container justify="center" className="movies">
+                <Grid container justify="center" spacing={1} className="movies">
                     {movies.map(movie => {
                         return (
                             // <div key={movie.id} >

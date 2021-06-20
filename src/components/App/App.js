@@ -17,14 +17,17 @@ function App() {
     const theme = createMuiTheme({
         palette: {
             primary: {
-                main: '#F3BB5C'
+                main: '#020C1D'
             },
             secondary: {
-                main: '#CFBF84'
+                main: '#F3BB5C'
             },
             text: {
-                primary: '#FFFFFF'
-            }
+                primary: '#FFFFFF',
+                secondary: '#1F191B'
+                
+            },
+            divider: '#FFFFFF',
         }
     })
 
