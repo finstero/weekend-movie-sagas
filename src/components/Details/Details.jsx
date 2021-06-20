@@ -6,10 +6,11 @@ import { useHistory } from 'react-router-dom';
 function Details() {
 
     const history = useHistory();
-    
+
     const clickedMovie = useSelector(store => store.clickedMovie);
     console.log('clickedMovie', clickedMovie);
 
+    // moves user back to MovieList on click of Return button
     const handleClick = () => {
         history.push('/');
     }

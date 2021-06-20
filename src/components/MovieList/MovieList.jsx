@@ -13,23 +13,20 @@ function MovieList() {
     const history = useHistory();
     const movies = useSelector(store => store.movies);
 
-    const clickedMovie = useSelector(store => store.clickedMovie);
+    // const clickedMovie = useSelector(store => store.clickedMovie);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
-        // dispatch({ type: 'CLEAR_DETAILS'})
     }, []);
 
-
+    // sends clicked on movie through saga/reducer cycle. moves user to details page
     const handleMovieClick = (movie) => {
-        // dispatch({ type: 'CLEAR_DETAILS'})
 
         console.log('clicked');
         dispatch({
             type: 'FETCH_MOVIE_DETAILS',
             payload: movie
         })
-        console.log('please please clickedMovie', clickedMovie);
         history.push('/details')
     }
 

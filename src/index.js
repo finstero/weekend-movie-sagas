@@ -17,11 +17,10 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
 }
 
-
+// grabs clicked on movie object
 function* fetchMovieDetails (action) {
     console.log('in fetchMovieDetails worker saga', action.payload.id);
     try{
-        // yield put({type: 'CLEAR_DETAILS'});
         const clickedMovie = yield axios.get(`/api/movie/details/${action.payload.id}`);
         yield put({ type: 'SET_DETAILS', payload: clickedMovie.data});
         console.log('in fetchMovieDetails worker saga clickedMovie.data', clickedMovie.data);
@@ -71,9 +70,6 @@ const clickedMovie = (state = [], action) => {
         case 'SET_DETAILS':
             console.log('action.payload in clickedMovie', action.payload);
             return action.payload;
-        case 'CLEAR_DETAILS':
-            console.log('cleared details');
-            return [];
         default:
             return state;
     }
