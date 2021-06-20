@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 // material ui
@@ -13,19 +14,33 @@ import Select from '@material-ui/core/Select';
 function AddMovie() {
 
     const history = useHistory();
-
+    const dispatch = useDispatch();
 
     const [movieTitle, setMovieTitle] = useState('');
     const [moviePosterUrl, setMoviePosterUrl] = useState('');
     const [movieDescription, setMovieDescription] = useState('');
     const [genre, setGenre] = useState('');
 
-    const handleSave = () => {
-
+    const handleSave = (event) => {
+        event.preventDefault();
+        console.log('log genre', genre);
     }
 
     const handleCancel = () => {
         history.push('/');
+    }
+    const handleSelect = (event) => {
+        setGenre(event.target.value);
+        console.log('------ genre', genre)
+        dispatch({
+            type: 'ADD_MOVIE',
+            payload: { 
+                title: movieTitle,
+                poster: moviePosterUrl,
+                description: movieDescription,
+                genre_id: 1
+            }
+        })
     }
 
     return (
@@ -55,25 +70,25 @@ function AddMovie() {
                     labelId="genre-label"
                     id="genre"
                     value={genre}
-                    onChange={(event) => { setGenre(event.target.value) }}
+                    onChange={handleSelect}
                 >
 
-                    <MenuItem value={10}>Adventure</MenuItem>
-                    <MenuItem value={20}>Animated</MenuItem>
-                    <MenuItem value={30}>Biographical</MenuItem>
-                    <MenuItem value={10}>Comedy</MenuItem>
-                    <MenuItem value={20}>Disaster</MenuItem>
-                    <MenuItem value={30}>Drama</MenuItem>
-                    <MenuItem value={10}>Epic</MenuItem>
-                    <MenuItem value={20}>Fantasy</MenuItem>
-                    <MenuItem value={30}>Musical</MenuItem>
-                    <MenuItem value={10}>Romantic</MenuItem>
-                    <MenuItem value={20}>Science Fiction</MenuItem>
-                    <MenuItem value={30}>Space Opera</MenuItem>
-                    <MenuItem value={30}>Superhero</MenuItem>
+                    <MenuItem value="Adventure">Adventure</MenuItem>
+                    <MenuItem value="Animated">Animated</MenuItem>
+                    <MenuItem value="Biographical">Biographical</MenuItem>
+                    <MenuItem value="Comedy">Comedy</MenuItem>
+                    <MenuItem value="Disaster">Disaster</MenuItem>
+                    <MenuItem value="Drama">Drama</MenuItem>
+                    <MenuItem value="Epic">Epic</MenuItem>
+                    <MenuItem value="Fantasy">Fantasy</MenuItem>
+                    <MenuItem value="Musical">Musical</MenuItem>
+                    <MenuItem value="Romantic">Romantic</MenuItem>
+                    <MenuItem value="Science">Science Fiction</MenuItem>
+                    <MenuItem value="Space Opera">Space Opera</MenuItem>
+                    <MenuItem value="Superhero">Superhero</MenuItem>
 
                 </Select>
-                <Button color="primary">add</Button>
+                <Button type="submit" color="primary">Save</Button>
             </form>
             <Button color="primary" onClick={handleCancel}>Cancel</Button>
         </>
