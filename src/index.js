@@ -21,9 +21,10 @@ function* rootSaga() {
 function* fetchMovieDetails (action) {
     console.log('in fetchMovieDetails worker saga', action.payload.id);
     try{
+        // yield put({type: 'CLEAR_DETAILS'});
         const clickedMovie = yield axios.get(`/api/movie/details/${action.payload.id}`);
-        yield put({ type: 'SET_DETAILS', payload: clickedMovie.data[0]});
-        console.log('in fetchMovieDetails worker saga clickedMovie.data', clickedMovie.data[0]);
+        yield put({ type: 'SET_DETAILS', payload: clickedMovie.data});
+        console.log('in fetchMovieDetails worker saga clickedMovie.data', clickedMovie.data);
     } catch {
         console.log('fetchAllMovies error, want id', action.payload.id);
     }
@@ -65,11 +66,14 @@ const genres = (state = [], action) => {
     }
 }
 
-const clickedMovie = (state = {}, action) => {
+const clickedMovie = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
-            // console.log('state in clickedMovie', action.payload);
+            console.log('action.payload in clickedMovie', action.payload);
             return action.payload;
+        case 'CLEAR_DETAILS':
+            console.log('cleared details');
+            return [];
         default:
             return state;
     }
