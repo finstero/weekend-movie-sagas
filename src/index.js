@@ -15,11 +15,22 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
+    yield takeEvery('ADD_MOVIE', addMovie);
+}
+
+function* addMovie (action) {
+    console.log('add movie action.payload', action.payload);
+    try {
+        console.log('are we getting into try');
+        yield axios.post('/api/movie', action.payload)
+    } catch {
+        console.log('error in addMovie', action.payload);
+    }
 }
 
 // grabs clicked on movie object
 function* fetchMovieDetails (action) {
-    console.log('in fetchMovieDetails worker saga', action.payload.id);
+    // console.log('in fetchMovieDetails worker saga', action.payload.id);
     try{
         const clickedMovie = yield axios.get(`/api/movie/details/${action.payload.id}`);
         yield put({ type: 'SET_DETAILS', payload: clickedMovie.data});
