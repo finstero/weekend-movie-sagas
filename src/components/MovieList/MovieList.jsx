@@ -19,9 +19,9 @@ function MovieList() {
 
 
     const handleMovieClick = (movie) => {
-        // console.log('clicked');
+        console.log('clicked');
         dispatch({
-            type: 'SET_DETAILS',
+            type: 'FETCH_MOVIE_DETAILS',
             payload: movie
         })
         history.push('/details')
