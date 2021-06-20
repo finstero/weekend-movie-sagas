@@ -64,7 +64,7 @@ const genres = (state = [], action) => {
             return state;
     }
 }
-
+ // stores data for clicked on movie
 const clickedMovie = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
