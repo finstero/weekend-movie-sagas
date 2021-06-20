@@ -47,19 +47,13 @@ function AddMovie() {
     }
 
     const useStyles = makeStyles((theme) => ({
-        root: { '&.Mui-selected': { color: "#ffffff", },
+        root: {
             '& .MuiTextField-root': {
                 margin: theme.spacing(1),
                 width: '25ch',
                 background: "#F5A191",
                 textColor: "white",
             },
-            select: {
-                    width: '25ch',
-                    backgroundColor: '#F5A191 !important',
-                    color: 'black !important',
-
-            }
         },
     }));
 
