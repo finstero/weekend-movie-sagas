@@ -62,7 +62,7 @@ function MovieList() {
     return (
         <>
             <main className="main">
-                <Button onClick={handleAddClick} color="textPrimary">Add Movie</Button>
+                <Button onClick={handleAddClick} color="secondary">Add Movie</Button>
                 <Grid container justify="center" spacing={1} className="movies">
                     {movies.map(movie => {
                         return (
@@ -86,7 +86,7 @@ function MovieList() {
                                                 variant="h5"
                                                 component="h4"
                                                 className={classes.title}
-                                                color="textPrimary">
+                                                color="textSecondary">
                                                 {movie.title}
                                             </Typography>
                                         </CardContent>

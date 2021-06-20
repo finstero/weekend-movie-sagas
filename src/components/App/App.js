@@ -5,7 +5,7 @@ import './App.css';
 import Header from '../Header/Header';
 import MovieList from '../MovieList/MovieList';
 import Details from '../Details/Details';
-import AddMovie from '../AddMovie/AddMovie';
+import MovieForm from '../MovieForm/MovieForm';
 
 // material ui
 import '@fontsource/roboto';
@@ -20,14 +20,15 @@ function App() {
                 main: '#020C1D'
             },
             secondary: {
-                main: '#F3BB5C'
+                main: '#F5A191'
             },
             text: {
-                primary: '#FFFFFF',
-                secondary: '#1F191B'
+                primary: '#020C1D',
+                secondary: '#FFFFFF'
                 
             },
             divider: '#FFFFFF',
+            accent1color: '#FFFFFF'
         }
     })
 
@@ -43,7 +44,7 @@ function App() {
                         <Details />
                     </Route>
                     <Route path="/add">
-                        <AddMovie />
+                        <MovieForm />
                     </Route>
                 </Router>
             </div>

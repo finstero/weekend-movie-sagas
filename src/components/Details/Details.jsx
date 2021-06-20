@@ -40,6 +40,7 @@ function Details() {
         description: {
             backgroundColor: theme.palette.primary.main,
             marginTop: 8,
+            color: theme.palette.text.secondary,
         },
         genre: {
             backgroundColor: theme.palette.primary.main,
@@ -74,7 +75,7 @@ function Details() {
                     </ul>
                 </Grid>
                 <Grid item>
-                    <Button onClick={handleClick} variant="outlined">Return</Button>
+                    <Button color="secondary" onClick={handleClick} variant="outlined">Return</Button>
                 </Grid>
             </Grid>
         </div>
