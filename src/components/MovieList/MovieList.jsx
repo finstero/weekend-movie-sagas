@@ -6,7 +6,6 @@ import './MovieList.css'
 
 // material ui
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -22,6 +21,7 @@ function MovieList() {
     const history = useHistory();
     const movies = useSelector(store => store.movies);
 
+    // grabs all movies from database on page load
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
@@ -42,6 +42,7 @@ function MovieList() {
         history.push('/details')
     }
 
+    // styling for material ui
     const useStyles = makeStyles((theme) => ({
         root: {
             backgroundColor: theme.palette.primary.main,

@@ -15,15 +15,17 @@ function Details() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // reducer storing clicked on movie info
     const clickedMovie = useSelector(store => store.clickedMovie);
     console.log('clickedMovie', clickedMovie);
 
-    useEffect(() => {
-        dispatch({
-            type: 'FETCH_MOVIE_DETAILS',
-            payload: clickedMovie
-        })
-    }, []);
+    // this useEffect did not work but was my attempt at the first stretch goal
+    // useEffect(() => {
+    //     dispatch({
+    //         type: 'FETCH_MOVIE_DETAILS',
+    //         payload: clickedMovie
+    //     })
+    // }, []);
 
     // moves user back to MovieList on click of Return button
     const handleClick = () => {
@@ -58,7 +60,7 @@ function Details() {
 
     const classes = useStyles();
 
-
+    // displays details of clicked on movie in a grid
     return (
         <div className={classes.root}>
             <Grid container justify="center">

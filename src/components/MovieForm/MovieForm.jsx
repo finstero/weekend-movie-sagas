@@ -14,7 +14,6 @@ import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 
 
-
 function AddMovie() {
 
     const history = useHistory();
@@ -61,6 +60,10 @@ function AddMovie() {
     const classes = useStyles();
 
     // displays inputs, select, and buttons for user to save movie or go back
+    // SELECT COMPONENT STYLING WAS THE MOST ANNOYING PART OF THIS PROJECT
+    // I couldn't figure out how to make the text of the TextField and the
+    // Select component different, and it makes it look partially unreadable
+    // I spent several hours on this and then gave up. any help would be amazing
     return (
         <>
             <Grid container>
