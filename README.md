@@ -23,10 +23,10 @@ This App displays a collection of movies and images of their posters. On click o
 # Screenshots
 
 Movie list view:
-<!-- ![screenshot](./screenshot/support.png) -->
+![screenshot](./screenshot/MovieList.png)
 
 Details view:
-<!-- ![screenshot](./screenshot/support.png) -->
+![screenshot](./screenshot/Details.png)
 
 # Installation
 
