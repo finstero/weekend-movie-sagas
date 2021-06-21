@@ -39,6 +39,7 @@ function AddMovie() {
                 genre_id: genre
             }
         })
+        history.push('/');
     }
 
     // move user back to MovieList view
