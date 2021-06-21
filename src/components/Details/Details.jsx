@@ -13,16 +13,24 @@ import Paper from '@material-ui/core/Paper';
 function Details() {
 
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const clickedMovie = useSelector(store => store.clickedMovie);
     console.log('clickedMovie', clickedMovie);
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_MOVIE_DETAILS',
+            payload: clickedMovie
+        })
+    }, []);
 
     // moves user back to MovieList on click of Return button
     const handleClick = () => {
         history.push('/');
     }
 
-
+    // styling for material ui
     const useStyles = makeStyles((theme) => ({
         root: {
             flexGrow: 1,
@@ -66,7 +74,7 @@ function Details() {
                     {/* <p>{clickedMovie[0]?.description}</p> */}
                 </Grid>
                 <Grid item xs={3} variant="outlined" className={classes.genre}>
-                    <ul>Genres:
+                    <ul type="none">Genres:
                         {clickedMovie.map((info, i) => {
                             return (
                                 <li key={i}>{info.name}</li>

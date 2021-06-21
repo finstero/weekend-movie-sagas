@@ -27,9 +27,9 @@ function MovieList() {
     }, []);
 
     // on click of add movie button, sends user to add page
-    const handleAddClick = () => {
-        history.push('/add');
-    }
+    // const handleAddClick = () => {
+    //     history.push('/add');
+    // }
 
     // on click of movie, sends movie info through saga/reducer cycle. moves user to details page
     const handleMovieClick = (movie) => {
@@ -62,7 +62,7 @@ function MovieList() {
     return (
         <>
             <main className="main">
-                <Button onClick={handleAddClick} color="secondary">Add Movie</Button>
+                {/* <Button onClick={handleAddClick} color="secondary">Add Movie</Button> */}
                 <Grid container justify="center" spacing={1} className="movies">
                     {movies.map(movie => {
                         return (
