@@ -1,9 +1,37 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Movie Collection App
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Duration: 2 day sprint
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Made using:
+
+Javascript,
+Node.js,
+React,
+React - Redux,
+React - Saga
+React - Router - DOM,
+Express,
+Postico,
+PostgresSQL,
+
+and Material-UI for styling.
+
+This App displays a collection of movies and images of their posters. On click of a movie poster, user will be moved to a details view of the respective movie. User is able to return to movie list view on click of button. The user can add a movie by clicking on the 'add movie' button on the movie list view. This will move the user to the add page, so they can enter in a new movie and movie info. All inputs are required.
+
+# Screenshots
+
+Movie list view:
+<!-- ![screenshot](./screenshot/support.png) -->
+
+Details view:
+<!-- ![screenshot](./screenshot/support.png) -->
+
+# Installation
+
+1. Create database using database.sql file and included queries.
+2. 'npm install'
+3. 'run npm server' to start server
+4. 'run npm client' to start client
+5. Go to localhost:3000/ to see app.
