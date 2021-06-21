@@ -10,7 +10,7 @@ Javascript,
 Node.js,
 React,
 React - Redux,
-React - Saga
+React - Saga,
 React - Router - DOM,
 Express,
 Postico,
